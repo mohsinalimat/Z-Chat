@@ -10,26 +10,37 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
 
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    //MARK: - Actions
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func login(_ sender: UIButton) {
+        if let username = username.text, let password = password.text, !username.isEmpty && !password.isEmpty {
+            ProgressHUD.show("Log in...", interaction: true)
+            UserService.instance.loginUserWith(username: username, password: password) {
+                [unowned self] (error: UserServiceError?) -> Void in
+                if let error = error, case let UserServiceError.LoginError(msg) = error {
+                    ProgressHUD.showError(msg)
+                } else {
+                    ProgressHUD.dismiss()
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "RectViewController")
+                    self.present(vc!, animated: true, completion: nil)
+                }
+            }
+        } else {
+            ProgressHUD.showError("All fields can't be empty")
+        }
     }
-    */
-
 }

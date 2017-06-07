@@ -23,6 +23,10 @@
 		5D0677BC1EE6E0C500CED379 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0677BB1EE6E0C500CED379 /* SystemConfiguration.framework */; };
 		5D0677BE1EE6E0D200CED379 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0677BD1EE6E0D200CED379 /* PushKit.framework */; };
 		5D0677C11EE6F53400CED379 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0677C01EE6F53400CED379 /* WelcomeViewController.swift */; };
+		5D0677C41EE828D000CED379 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0677C31EE828D000CED379 /* UserService.swift */; };
+		5DF08C611EE837D300012CAE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF08C601EE837D300012CAE /* RegisterViewController.swift */; };
+		5DF08C631EE83CB800012CAE /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF08C621EE83CB800012CAE /* Errors.swift */; };
+		5DF08C651EE84BC000012CAE /* RecntViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF08C641EE84BC000012CAE /* RecntViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,10 @@
 		5D0677BB1EE6E0C500CED379 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5D0677BD1EE6E0D200CED379 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		5D0677C01EE6F53400CED379 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = ViewControllers/WelcomeViewController.swift; sourceTree = "<group>"; };
+		5D0677C31EE828D000CED379 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = Services/UserService.swift; sourceTree = "<group>"; };
+		5DF08C601EE837D300012CAE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = ViewControllers/RegisterViewController.swift; sourceTree = "<group>"; };
+		5DF08C621EE83CB800012CAE /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = Services/Errors.swift; sourceTree = "<group>"; };
+		5DF08C641EE84BC000012CAE /* RecntViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecntViewController.swift; path = ViewControllers/RecntViewController.swift; sourceTree = "<group>"; };
 		9075604B4D26E680E7652363 /* libPods-Z-Chat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Z-Chat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9461924F8D29FE1286032C2E /* Pods-Z-ChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Z-ChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Z-ChatTests/Pods-Z-ChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1A5992F65040E2C80DFC14F /* Pods-Z-ChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Z-ChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Z-ChatTests/Pods-Z-ChatTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +132,7 @@
 		5D0677811EE6D70800CED379 /* Z-Chat */ = {
 			isa = PBXGroup;
 			children = (
+				5D0677C21EE8289600CED379 /* Services */,
 				5D0677BF1EE6F50900CED379 /* ViewControllers */,
 				5D0677AD1EE6DCC300CED379 /* Encryption */,
 				5D0677B71EE6DFA300CED379 /* Constants.swift */,
@@ -170,8 +179,19 @@
 			isa = PBXGroup;
 			children = (
 				5D0677C01EE6F53400CED379 /* WelcomeViewController.swift */,
+				5DF08C601EE837D300012CAE /* RegisterViewController.swift */,
+				5DF08C641EE84BC000012CAE /* RecntViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5D0677C21EE8289600CED379 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5D0677C31EE828D000CED379 /* UserService.swift */,
+				5DF08C621EE83CB800012CAE /* Errors.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		C92E64C857FB3C5FEFE539B1 /* Pods */ = {
@@ -392,11 +412,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DF08C631EE83CB800012CAE /* Errors.swift in Sources */,
 				5D0677AF1EE6DD0E00CED379 /* RNCryptor.swift in Sources */,
 				5D0677C11EE6F53400CED379 /* WelcomeViewController.swift in Sources */,
+				5DF08C611EE837D300012CAE /* RegisterViewController.swift in Sources */,
+				5D0677C41EE828D000CED379 /* UserService.swift in Sources */,
 				5D0677B61EE6DEC300CED379 /* ProgressHUD.m in Sources */,
 				5D0677831EE6D70800CED379 /* AppDelegate.swift in Sources */,
 				5D0677B81EE6DFA300CED379 /* Constants.swift in Sources */,
+				5DF08C651EE84BC000012CAE /* RecntViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,8 +14,8 @@ let backendless = Backendless.sharedInstance()
 let firebase = FIRDatabase.database().reference()
 let userDefaults = UserDefaults.standard
 
-let BACKENDLESS_APP_ID = "42B85C94-18E8-2BBE-FF57-2500CC14CB00"
-let BACKENDLESS_SECRECT_KEY = "42B85C94-18E8-2BBE-FF57-2500CC14CB00"
+let BACKENDLESS_APP_ID = "CC6F2D35-A36A-4BC1-FF67-06C7C2453F00"
+let BACKENDLESS_SECRECT_KEY = "5C149EF5-9E1F-4FE4-FF3C-AE38D5BC1500"
 let BACKENDLESS_VERSION_NUM = "v1"
 
 public let kAVATARSTATE = "avatarState"
