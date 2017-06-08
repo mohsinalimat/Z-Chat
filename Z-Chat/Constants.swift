@@ -19,9 +19,13 @@ let BACKENDLESS_SECRECT_KEY = "5C149EF5-9E1F-4FE4-FF3C-AE38D5BC1500"
 let BACKENDLESS_VERSION_NUM = "v1"
 
 public let kAVATARSTATE = "avatarState"
+public let kAVATARPATH = "Image/Avatar"
+public let kAVATARKEY = "Avatar"
 public let kFIRSTRUN = "firstRun"
 public let kNUMBEROFMESSAGES = 40
 public let kMAXDURATION = 5.0
 public let kSUCCESS = 2
+
+
 
 

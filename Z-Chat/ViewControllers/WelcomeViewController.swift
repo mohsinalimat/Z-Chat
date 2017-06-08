@@ -17,6 +17,9 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if UserService.instance.hasLoggedIn() {
+            self.performSegue(withIdentifier: "ShowRecent", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,8 +38,7 @@ class WelcomeViewController: UIViewController {
                     ProgressHUD.showError(msg)
                 } else {
                     ProgressHUD.dismiss()
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "RectViewController")
-                    self.present(vc!, animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "ShowRecent", sender: self)
                 }
             }
         } else {

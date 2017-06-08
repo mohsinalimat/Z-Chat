@@ -9,8 +9,10 @@
 import Foundation
 
 enum UserServiceError: Error {
+    case UnknownError(String)
     case ServiceError(String)
     case LoginError(String)
     case EmptyError(String)
     case RegisterError(String)
+    case UploadError(String)
 }

@@ -17,6 +17,15 @@ class UserService {
         
     }
     
+    func hasLoggedIn() -> Bool {
+        let user = backendless?.userService.currentUser
+        return user != nil
+    }
+    
+    func currentUser() -> BackendlessUser? {
+        return backendless?.userService.currentUser
+    }
+    
     func loginUserWith(username: String, password: String, completion: @escaping (_ error: UserServiceError?) -> Void ) {
         if let backendless = backendless {
             backendless.userService.login(username, password: password, response: {
@@ -37,9 +46,14 @@ class UserService {
             user.name = username as NSString
             user.email = email as NSString
             user.password = password as NSString
+            user.setProperty(kAVATARKEY, object: "")
             
             backendless.userService.registering(user, response: {
                 (user: BackendlessUser?) -> Void in
+                if let avatar = avatar, let file = self.uploadUserAvatar(avatar) {
+                    user?.setProperty(kAVATARKEY, object: file.fileURL)
+                    backendless.userService.update(user)
+                }
                 completion(nil)
             }, error: {
                 (fault: Fault?) -> Void in
@@ -51,4 +65,12 @@ class UserService {
 
     }
     
+    fileprivate func uploadUserAvatar(_ avatar: UIImage) -> BackendlessFile? {
+        if let backendless = backendless, let imageData = UIImagePNGRepresentation(avatar) {
+            let filePath = "\(kAVATARPATH)/avatar-\(String.currentDateTimeString()).png"
+            return backendless.fileService.upload(filePath, content: imageData)
+        }
+        
+        return nil
+    }
 }

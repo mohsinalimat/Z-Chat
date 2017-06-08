@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     backendless?.initApp(BACKENDLESS_APP_ID, secret: BACKENDLESS_SECRECT_KEY, version: BACKENDLESS_VERSION_NUM)
+    backendless?.userService.setStayLoggedIn(true)
     FIRApp.configure()
     FIRDatabase.database().persistenceEnabled = true
     

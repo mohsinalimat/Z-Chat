@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Welcome View Controller-->
+        <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Z_Chat" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,7 +60,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="57" height="30"/>
                                         <state key="normal" title="Register"/>
                                         <connections>
-                                            <segue destination="Nrl-Sy-bAj" kind="show" id="raS-WA-Sny"/>
+                                            <segue destination="HXl-DO-XIH" kind="showDetail" action="showViewController:sender:" id="raS-WA-Sny"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -84,17 +84,18 @@
                             <constraint firstItem="3LP-wB-htd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="xZ4-cA-SeZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="XmC-Tz-vZv"/>
+                    <navigationItem key="navigationItem" title="Login" id="XmC-Tz-vZv"/>
                     <connections>
                         <outlet property="password" destination="QUu-vX-FHq" id="zzt-ZR-uRI"/>
                         <outlet property="username" destination="Ydf-RD-dLh" id="o3K-9t-JBL"/>
+                        <segue destination="0wq-X2-Dmx" kind="presentation" identifier="ShowRecent" id="peO-cX-HOI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1057.5" y="-67.605633802816897"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Register-->
         <scene sceneID="7H6-yt-W8Y">
             <objects>
                 <viewController id="Nrl-Sy-bAj" customClass="RegisterViewController" customModule="Z_Chat" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,38 +114,46 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e9t-F9-RIP">
-                                <rect key="frame" x="16" y="185" width="288" height="30"/>
+                                <rect key="frame" x="16" y="258" width="288" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7a2-5c-xHj">
-                                <rect key="frame" x="16" y="223" width="288" height="30"/>
+                                <rect key="frame" x="16" y="296" width="288" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2hC-mU-Ahd">
-                                <rect key="frame" x="16" y="261" width="288" height="30"/>
+                                <rect key="frame" x="16" y="334" width="288" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fep-b0-568">
-                                <rect key="frame" x="129" y="331" width="62" height="30"/>
+                                <rect key="frame" x="129" y="404" width="62" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Register"/>
                                 <connections>
                                     <action selector="register:" destination="Nrl-Sy-bAj" eventType="touchUpInside" id="tnY-BH-uPW"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="6rU-HG-EtJ">
+                                <rect key="frame" x="130" y="173" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="0X9-6W-2Rx"/>
+                                    <constraint firstAttribute="height" constant="60" id="yGY-3J-B6t"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7a2-5c-xHj" firstAttribute="leading" secondItem="e9t-F9-RIP" secondAttribute="leading" id="3No-6O-m77"/>
+                            <constraint firstItem="e9t-F9-RIP" firstAttribute="top" secondItem="6rU-HG-EtJ" secondAttribute="bottom" constant="25" id="4DK-aW-4a4"/>
                             <constraint firstItem="2hC-mU-Ahd" firstAttribute="top" secondItem="7a2-5c-xHj" secondAttribute="bottom" constant="8" symbolic="YES" id="7jL-SY-2H7"/>
-                            <constraint firstItem="e9t-F9-RIP" firstAttribute="top" secondItem="Nng-RK-bNg" secondAttribute="bottom" constant="20" id="82l-9q-UKB"/>
                             <constraint firstItem="Nng-RK-bNg" firstAttribute="top" secondItem="Vxw-jE-n0C" secondAttribute="bottom" constant="80" id="8SZ-Y0-jTO"/>
+                            <constraint firstItem="6rU-HG-EtJ" firstAttribute="top" secondItem="Nng-RK-bNg" secondAttribute="bottom" constant="8" id="B4e-2N-gjh"/>
                             <constraint firstItem="fep-b0-568" firstAttribute="centerX" secondItem="20R-KG-AzG" secondAttribute="centerX" id="BtK-Ra-Onz"/>
                             <constraint firstItem="Nng-RK-bNg" firstAttribute="centerX" secondItem="20R-KG-AzG" secondAttribute="centerX" id="CaD-nf-eLC"/>
                             <constraint firstItem="e9t-F9-RIP" firstAttribute="trailing" secondItem="20R-KG-AzG" secondAttribute="trailingMargin" id="Dcs-VJ-nOR"/>
@@ -154,17 +163,32 @@
                             <constraint firstItem="fep-b0-568" firstAttribute="top" secondItem="2hC-mU-Ahd" secondAttribute="bottom" constant="40" id="OCk-wZ-zDl"/>
                             <constraint firstItem="7a2-5c-xHj" firstAttribute="top" secondItem="e9t-F9-RIP" secondAttribute="bottom" constant="8" symbolic="YES" id="OZ2-qm-nvB"/>
                             <constraint firstItem="7a2-5c-xHj" firstAttribute="trailing" secondItem="e9t-F9-RIP" secondAttribute="trailing" id="Oke-j3-Glb"/>
+                            <constraint firstItem="6rU-HG-EtJ" firstAttribute="centerX" secondItem="20R-KG-AzG" secondAttribute="centerX" id="fYR-c7-3ZU"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Register" id="qLc-CE-7fi">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6KY-va-kox">
+                            <connections>
+                                <action selector="cancel:" destination="Nrl-Sy-bAj" id="d5T-wZ-vCf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="ykv-Eb-iC8">
+                            <connections>
+                                <action selector="chooseAvatar:" destination="Nrl-Sy-bAj" id="6Ff-Re-fra"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="avatar" destination="6rU-HG-EtJ" id="Ea7-cT-bf7"/>
                         <outlet property="email" destination="7a2-5c-xHj" id="dlA-u7-3T4"/>
                         <outlet property="password" destination="2hC-mU-Ahd" id="ZHU-2t-7EX"/>
                         <outlet property="username" destination="e9t-F9-RIP" id="Rip-UL-Oc3"/>
+                        <segue destination="0wq-X2-Dmx" kind="presentation" identifier="ShowRecent" id="3mT-ig-LdH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wob-BR-7HE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777.5" y="-70.774647887323951"/>
+            <point key="canvasLocation" x="2814.375" y="-380.28169014084506"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="TYn-kt-SRb">
@@ -183,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="heO-Xi-4Qw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3555" y="261"/>
+            <point key="canvasLocation" x="4552.5" y="260.91549295774649"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="Vci-Ek-0yC">
@@ -202,12 +226,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jh-c8-7OO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3555" y="-402"/>
+            <point key="canvasLocation" x="4552.5" y="-402.46478873239437"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Recent-->
         <scene sceneID="WQ9-CU-Hkp">
             <objects>
                 <tabBarController storyboardIdentifier="RectViewController" id="0wq-X2-Dmx" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Recent" id="iMa-Qy-dbd"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="cXk-ZR-YI8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -220,7 +245,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTk-yx-JBH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2541" y="-71"/>
+            <point key="canvasLocation" x="1817" y="425"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sOb-oz-z9M">
@@ -240,5 +265,29 @@
             </objects>
             <point key="canvasLocation" x="60" y="-67.605633802816897"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kJJ-pX-mAo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HXl-DO-XIH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ttN-nI-hXq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Nrl-Sy-bAj" kind="relationship" relationship="rootViewController" id="wt5-q4-jjV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="539-KM-c3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1816.875" y="-380.28169014084506"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="avatar" width="150" height="150"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3mT-ig-LdH"/>
+    </inferredMetricsTieBreakers>
 </document>
