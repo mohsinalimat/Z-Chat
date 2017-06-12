@@ -17,25 +17,52 @@ class MediaService {
     
     class Image: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         
+        enum avatarSourceType {
+            case photoLibrary
+            case camera
+        }
+        
         weak var viewController: UIViewController?
         var imageHandler: ((_ image: UIImage?) -> Void)?
         
-        func choosePhotoFromLibrary(for vc: UIViewController, imageHandler: ((_ image: UIImage?) -> Void)?) {
-            // Check source type
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) || UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
-                viewController = vc
+        func getAvatarFrom(source type: avatarSourceType, for viewController: UIViewController, imageHandler: ((_ image: UIImage?) -> Void)?) {
+            let avaibleType: Bool
+            let validMediaType: Bool
+            let sourceType: UIImagePickerControllerSourceType
+            switch type {
+            case .photoLibrary:
+                avaibleType = UIImagePickerController.isSourceTypeAvailable(.photoLibrary) || UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum)
+                validMediaType = UIImagePickerController.availableMediaTypes(for: .photoLibrary)?.contains(kUTTypeImage as String) ?? false
+                sourceType = .photoLibrary
+            case .camera:
+                avaibleType = UIImagePickerController.isSourceTypeAvailable(.camera)
+                validMediaType = UIImagePickerController.availableMediaTypes(for: .camera)?.contains(kUTTypeImage as String) ?? false
+                sourceType = .camera
+            }
+            
+            if avaibleType && validMediaType {
+                self.viewController = viewController
                 self.imageHandler = imageHandler
                 
-                let imagePickController = UIImagePickerController()
-                imagePickController.modalPresentationStyle = .popover
-                imagePickController.popoverPresentationController?.barButtonItem = vc.navigationItem.rightBarButtonItem
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.modalPresentationStyle = .popover
+                imagePickerController.popoverPresentationController?.barButtonItem = viewController.navigationItem.rightBarButtonItem
+                imagePickerController.delegate = self
+                imagePickerController.allowsEditing = true
+                imagePickerController.mediaTypes = [kUTTypeImage as String]
+                imagePickerController.sourceType = sourceType
                 
-                imagePickController.delegate = self
-                imagePickController.allowsEditing = true
-                imagePickController.mediaTypes = [kUTTypeImage as String]
-                imagePickController.sourceType = .photoLibrary
-                vc.present(imagePickController, animated: true, completion: nil)
+                viewController.present(imagePickerController, animated: true, completion: nil)
             }
+            
+        }
+        
+        func choosePhotoFromLibrary(for vc: UIViewController, imageHandler: ((_ image: UIImage?) -> Void)?) {
+            getAvatarFrom(source: .photoLibrary, for: vc, imageHandler: imageHandler)
+        }
+        
+        func takePhotoFromCamera(for vc: UIViewController, imageHandler: ((_ image: UIImage?)-> Void)?) {
+            getAvatarFrom(source: .camera, for: vc, imageHandler: imageHandler)
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

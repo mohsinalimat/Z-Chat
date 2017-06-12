@@ -62,7 +62,10 @@ class RegisterViewController: UIViewController {
         }
         let takePhoto = UIAlertAction(title: "Take photo", style: .default) {
             [unowned self] (action: UIAlertAction) -> Void in
-            
+            MediaService.instance.image.takePhotoFromCamera(for: self) {
+                [unowned self] (image: UIImage?) -> Void in
+                self.avatar.image = image
+            }
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(chooseFromLibrary)
