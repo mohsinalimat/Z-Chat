@@ -50,6 +50,9 @@ class RegisterViewController: UIViewController {
     
     @IBAction func chooseAvatar(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: nil, message: "Set your avatar", preferredStyle: .actionSheet)
+        alertController.modalPresentationStyle = .popover
+        alertController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+        
         let chooseFromLibrary = UIAlertAction(title: "Choose from library", style: .default) {
             [unowned self] (action: UIAlertAction) -> Void in
             MediaService.instance.image.choosePhotoFromLibrary(for: self) {

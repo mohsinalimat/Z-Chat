@@ -27,6 +27,8 @@ class MediaService {
                 self.imageHandler = imageHandler
                 
                 let imagePickController = UIImagePickerController()
+                imagePickController.modalPresentationStyle = .popover
+                imagePickController.popoverPresentationController?.barButtonItem = vc.navigationItem.rightBarButtonItem
                 
                 imagePickController.delegate = self
                 imagePickController.allowsEditing = true
