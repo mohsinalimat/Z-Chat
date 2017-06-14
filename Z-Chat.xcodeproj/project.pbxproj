@@ -24,6 +24,10 @@
 		5D0677BE1EE6E0D200CED379 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0677BD1EE6E0D200CED379 /* PushKit.framework */; };
 		5D0677C11EE6F53400CED379 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0677C01EE6F53400CED379 /* WelcomeViewController.swift */; };
 		5D0677C41EE828D000CED379 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0677C31EE828D000CED379 /* UserService.swift */; };
+		5D744AAC1EEEDE0700791C1F /* RecentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D744AAB1EEEDE0700791C1F /* RecentsViewController.swift */; };
+		5D744AAF1EEEE37500791C1F /* RecentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D744AAE1EEEE37500791C1F /* RecentTableViewCell.swift */; };
+		5D744AB11EF028A900791C1F /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D744AB01EF028A900791C1F /* FriendsViewController.swift */; };
+		5D744AB31EF0297700791C1F /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D744AB21EF0297700791C1F /* FriendsTableViewCell.swift */; };
 		5DB260E71EE979B200B744D8 /* MediaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB260E61EE979B200B744D8 /* MediaService.swift */; };
 		5DB260ED1EE994C300B744D8 /* String+utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB260EC1EE994C300B744D8 /* String+utils.swift */; };
 		5DF08C611EE837D300012CAE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF08C601EE837D300012CAE /* RegisterViewController.swift */; };
@@ -67,6 +71,10 @@
 		5D0677BD1EE6E0D200CED379 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		5D0677C01EE6F53400CED379 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = ViewControllers/WelcomeViewController.swift; sourceTree = "<group>"; };
 		5D0677C31EE828D000CED379 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = Services/UserService.swift; sourceTree = "<group>"; };
+		5D744AAB1EEEDE0700791C1F /* RecentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecentsViewController.swift; path = ViewControllers/RecentsViewController.swift; sourceTree = "<group>"; };
+		5D744AAE1EEEE37500791C1F /* RecentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecentTableViewCell.swift; path = Views/RecentTableViewCell.swift; sourceTree = "<group>"; };
+		5D744AB01EF028A900791C1F /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsViewController.swift; path = ViewControllers/FriendsViewController.swift; sourceTree = "<group>"; };
+		5D744AB21EF0297700791C1F /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsTableViewCell.swift; path = Views/FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		5DB260E61EE979B200B744D8 /* MediaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaService.swift; sourceTree = "<group>"; };
 		5DB260EC1EE994C300B744D8 /* String+utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+utils.swift"; path = "utils/String+utils.swift"; sourceTree = "<group>"; };
 		5DF08C601EE837D300012CAE /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = ViewControllers/RegisterViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +144,7 @@
 		5D0677811EE6D70800CED379 /* Z-Chat */ = {
 			isa = PBXGroup;
 			children = (
+				5D744AAD1EEEE35800791C1F /* Views */,
 				5DB260E81EE9946300B744D8 /* Utils */,
 				5D0677C21EE8289600CED379 /* Services */,
 				5D0677BF1EE6F50900CED379 /* ViewControllers */,
@@ -186,6 +195,8 @@
 				5D0677C01EE6F53400CED379 /* WelcomeViewController.swift */,
 				5DF08C601EE837D300012CAE /* RegisterViewController.swift */,
 				5DF08C641EE84BC000012CAE /* RecntViewController.swift */,
+				5D744AAB1EEEDE0700791C1F /* RecentsViewController.swift */,
+				5D744AB01EF028A900791C1F /* FriendsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -198,6 +209,15 @@
 				5DF08C621EE83CB800012CAE /* Errors.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		5D744AAD1EEEE35800791C1F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D744AAE1EEEE37500791C1F /* RecentTableViewCell.swift */,
+				5D744AB21EF0297700791C1F /* FriendsTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		5DB260E81EE9946300B744D8 /* Utils */ = {
@@ -427,14 +447,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DF08C631EE83CB800012CAE /* Errors.swift in Sources */,
+				5D744AAF1EEEE37500791C1F /* RecentTableViewCell.swift in Sources */,
 				5D0677AF1EE6DD0E00CED379 /* RNCryptor.swift in Sources */,
+				5D744AB31EF0297700791C1F /* FriendsTableViewCell.swift in Sources */,
 				5D0677C11EE6F53400CED379 /* WelcomeViewController.swift in Sources */,
+				5D744AB11EF028A900791C1F /* FriendsViewController.swift in Sources */,
 				5DF08C611EE837D300012CAE /* RegisterViewController.swift in Sources */,
 				5D0677C41EE828D000CED379 /* UserService.swift in Sources */,
 				5D0677B61EE6DEC300CED379 /* ProgressHUD.m in Sources */,
 				5DB260E71EE979B200B744D8 /* MediaService.swift in Sources */,
 				5D0677831EE6D70800CED379 /* AppDelegate.swift in Sources */,
 				5DB260ED1EE994C300B744D8 /* String+utils.swift in Sources */,
+				5D744AAC1EEEDE0700791C1F /* RecentsViewController.swift in Sources */,
 				5D0677B81EE6DFA300CED379 /* Constants.swift in Sources */,
 				5DF08C651EE84BC000012CAE /* RecntViewController.swift in Sources */,
 			);

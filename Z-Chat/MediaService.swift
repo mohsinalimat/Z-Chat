@@ -33,7 +33,7 @@ class MediaService {
             case .photoLibrary:
                 avaibleType = UIImagePickerController.isSourceTypeAvailable(.photoLibrary) || UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum)
                 validMediaType = UIImagePickerController.availableMediaTypes(for: .photoLibrary)?.contains(kUTTypeImage as String) ?? false
-                sourceType = .photoLibrary
+                sourceType = .savedPhotosAlbum
             case .camera:
                 avaibleType = UIImagePickerController.isSourceTypeAvailable(.camera)
                 validMediaType = UIImagePickerController.availableMediaTypes(for: .camera)?.contains(kUTTypeImage as String) ?? false

@@ -65,6 +65,26 @@ class UserService {
 
     }
     
+    func getAllUsers(completion: ((_ users: [BackendlessUser]?, _ error: UserServiceError?) -> Void)?) {
+        let currentUser = self.currentUser()
+        let query = BackendlessDataQuery()
+        if let objectId = currentUser?.objectId {
+            query.whereClause = "objectId != '\(objectId)'"
+            backendless?.persistenceService.of(BackendlessUser.ofClass()).find(query, response: { (usersCollection: BackendlessCollection?) -> Void in
+                if let users = usersCollection?.data as? [BackendlessUser] {
+                    completion?(users, nil)
+                } else {
+                    completion?(nil, UserServiceError.RetrieveUsersError("Unknown error!"))
+                }
+            }, error: { (fault: Fault?) -> Void in
+                completion?(nil, UserServiceError.RetrieveUsersError(fault!.detail))
+            })
+        }
+        
+        
+        
+    }
+    
     fileprivate func uploadUserAvatar(_ avatar: UIImage) -> BackendlessFile? {
         if let backendless = backendless, let imageData = UIImagePNGRepresentation(avatar) {
             let filePath = "\(kAVATARPATH)/avatar-\(String.currentDateTimeString()).png"

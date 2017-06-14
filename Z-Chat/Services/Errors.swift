@@ -15,4 +15,5 @@ enum UserServiceError: Error {
     case EmptyError(String)
     case RegisterError(String)
     case UploadError(String)
+    case RetrieveUsersError(String)
 }
