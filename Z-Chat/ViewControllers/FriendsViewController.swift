@@ -11,13 +11,20 @@ import UIKit
 class FriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    let searchController = UISearchController(searchResultsController: nil)
     
     var users: [BackendlessUser]? = nil
+    var filteredUsers: [BackendlessUser]? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.rowHeight = 60
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
         
         ProgressHUD.show()
         UserService.instance.getAllUsers {
@@ -31,22 +38,25 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    // MARK: - Search users
+    func curreantUsers() -> [BackendlessUser]? {
+        if (searchController.isActive && searchController.searchBar.text != "") {
+            return filteredUsers
+        }
+        
+        return users
+    }
 
     // MARK: - TableView Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users?.count ?? 0
+        return curreantUsers()?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! FriendsTableViewCell
-        cell.user = users?[indexPath.row]
+        cell.user = curreantUsers()?[indexPath.row]
         return cell
     }
     
@@ -55,5 +65,15 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         if let cell = cell as? FriendsTableViewCell {
             cell.cancelTask()
         }
+    }
+}
+
+extension FriendsViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text, !text.isEmpty {
+            filteredUsers = users?.filter { $0.name.lowercased.contains(text.lowercased()) }
+        }
+        
+        tableView.reloadData()
     }
 }
